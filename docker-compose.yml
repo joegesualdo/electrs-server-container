@@ -1,0 +1,16 @@
+version: "0.1"
+
+services:
+  electrs-testnet:
+    container_name: electrs-testnet
+    build: .
+    network_mode: "host"
+    ports:
+      - 50001:50001
+    working_dir: /
+    volumes:
+     - ./electrsdata:/electrsdata
+     - ./electrs_config.toml:/electrs_config.toml
+     - ${BITCOIN_DATA_DIR}:/root/.bitcoin
+    command: sh -c "/electrs/target/release/electrs --conf /electrs_config.toml"
+
