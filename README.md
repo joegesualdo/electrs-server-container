@@ -19,14 +19,17 @@ BITCOIN_DATA_DIR=~/code/bitcoin-core-node/btcdata docker compose up
 ### Requesting blockchain information
 > Use netcat on your local machine to request information from the server running in the docker container
 ```
+// get server version
+echo '{"jsonrpc": "2.0", "method": "server.version", "params": ["", "1.4"], "id": 0}' | nc 127.0.0.1 60001
+
 // get balance
-$ echo '{"jsonrpc": "2.0", "method": "blockchain.scripthash.get_balance", "id": 0, "params": ["704a62fd3b6e8a7c19d9c0ac0f358c2a728d24ef716f01b6f86bf9efaa078aa0"]}' | nc 127.0.0.1 50001
+$ echo '{"jsonrpc": "2.0", "method": "blockchain.scripthash.get_balance", "id": 0, "params": ["704a62fd3b6e8a7c19d9c0ac0f358c2a728d24ef716f01b6f86bf9efaa078aa0"]}' | nc 127.0.0.1 60001
 
 // get history
-echo '{"jsonrpc": "2.0", "method": "blockchain.scripthash.get_history", "id": 0, "params": ["0e96c20579a73b026d1f876a2b35ed3ef396b73bf1ad5562679c1086a27847cf"]}' | nc 127.0.0.1 50001
+echo '{"jsonrpc": "2.0", "method": "blockchain.scripthash.get_history", "id": 0, "params": ["0e96c20579a73b026d1f876a2b35ed3ef396b73bf1ad5562679c1086a27847cf"]}' | nc 127.0.0.1 60001
 
 // list unspent
- echo '{"jsonrpc": "2.0", "method": "blockchain.scripthash.listunspent", "id": 0, "params": ["0e96c20579a73b026d1f876a2b35ed3ef396b73bf1ad5562679c1086a27847cf"]}' | nc 127.0.0.1 50001
+ echo '{"jsonrpc": "2.0", "method": "blockchain.scripthash.listunspent", "id": 0, "params": ["0e96c20579a73b026d1f876a2b35ed3ef396b73bf1ad5562679c1086a27847cf"]}' | nc 127.0.0.1 60001
 ```
 
 #### Can I use curl instead of netcat? 
