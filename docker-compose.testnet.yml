@@ -3,18 +3,21 @@ version: "0.1"
 services:
   electrs-testnet:
     container_name: electrs-testnet
+    image: electrs-testnet
     build: https://github.com/joegesualdo/electrs-dockerfile.git#main
     ports:
       - 60001:60001
     working_dir: /
     volumes:
      - ./electrsdata:/electrsdata
-     - ./electrs_config.toml:/electrs_config.toml
-     - ${BITCOIN_DATA_DIR}:/root/.bitcoin
+     - ./electrs_config.testnet.toml:/electrs_config.toml
+     - ./btcdata:/root/.bitcoin
     environment:
       ELECTRS_DAEMON_RPC_ADDR: 'host.docker.internal:18332'
       ELECTRS_DAEMON_P2P_ADDR: 'host.docker.internal:18333'
       ELECTRS_ELECTRUM_RPC_ADDR: '0.0.0.0:60001' 
+      ELECTRS_WAIT_DURATION_SECS: 10000
+      ELECTRS_JSONRPC_TIMEOUT_SECS: 100000
     command: sh -c "/electrs/target/release/electrs --conf /electrs_config.toml"
     extra_hosts:
       - "host.docker.internal:host-gateway"

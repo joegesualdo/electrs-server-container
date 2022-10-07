@@ -11,13 +11,19 @@
 
 ## Run
 > Run the Electrs server and make RPC port accessible 
+Run mainnet:
 ```
-BITCOIN_DATA_DIR=~/code/bitcoin-core-node/btcdata docker compose up
+BITCOIN_DATA_DIR=~/code/bitcoin-core-node/btcdata docker compose -f docker-compose.mainnet.yml up
+```
+Run testnet:
+```
+BITCOIN_DATA_DIR=~/code/bitcoin-core-node/btcdata docker compose -f docker-compose.testnet.yml up
 ```
 
 ## Usage:
 ### Requesting blockchain information
 > Use netcat on your local machine to request information from the server running in the docker container
+Note: Port should be 50001 for mainnet and 60001 for testnet
 ```
 // get server version
 echo '{"jsonrpc": "2.0", "method": "server.version", "params": ["", "1.4"], "id": 0}' | nc 127.0.0.1 60001
@@ -38,7 +44,11 @@ No. This is because curl sends http headers (and method/host) but electrum only 
 
 ### SSH into the container
 ```
+// ssh into testnet container
 docker exec -it electrs-testnet /bin/bash
+
+// ssh into mainnet container
+docker exec -it electrs /bin/bash
 ```
 
 ## Requirements 
