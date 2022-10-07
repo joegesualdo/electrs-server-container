@@ -7,6 +7,8 @@
 
 ---
 
+*Currently, this is only configured for testnet. Other networks coming soon...*
+
 ## Run
 > Run the Electrs server and make RPC port accessible 
 ```
