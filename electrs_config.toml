@@ -14,11 +14,11 @@
 
 # The listening RPC address of bitcoind, port is usually 8332
 # daemon_rpc_addr = "127.0.0.1:8332"
-daemon_rpc_addr = "127.0.0.1:18332"
+#daemon_rpc_addr = "${HOST_IP}:18332"
 
 # The listening P2P address of bitcoind, port is usually 8333
 #daemon_p2p_addr = "127.0.0.1:8333"
-daemon_p2p_addr = "127.0.0.1:18333"
+#daemon_p2p_addr = "${HOST_IP}:18333"
 
 # Directory where the index should be stored. It should have at least 70GB of free space.
 db_dir = "/electrsdata"
@@ -28,7 +28,7 @@ network = "testnet"
 
 # The address on which electrs should listen. Warning: 0.0.0.0 is probably a bad idea!
 # Tunneling is the recommended way to access electrs remotely.
-electrum_rpc_addr = "127.0.0.1:50001"
+# electrum_rpc_addr = "127.0.0.1:50001"
 
 # How much information about internal workings should electrs print. Increase before reporting a bug.
 log_filters = "INFO"
