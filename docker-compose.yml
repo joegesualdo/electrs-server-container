@@ -3,7 +3,7 @@ version: "0.1"
 services:
   electrs-testnet:
     container_name: electrs-testnet
-    build: .
+    build: https://github.com/joegesualdo/electrs-dockerfile.git#main
     ports:
       - 60001:60001
     working_dir: /
