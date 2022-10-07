@@ -38,6 +38,7 @@ docker exec -it electrs-testnet /bin/bash
 
 ## Requirements 
 - [Docker](https://docs.docker.com/get-docker/)
+- Bitcoin Node
 
 # Notes
 For some reason, when I change the dockerfile, changes are not reflected when I run docker compose. So to reflect them, I do the following:
