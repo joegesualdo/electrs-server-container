@@ -12,7 +12,9 @@ services:
      - ./electrs_config.toml:/electrs_config.toml
      - ${BITCOIN_DATA_DIR}:/root/.bitcoin
     environment:
-      HOST_IP: host-gateway
-    command: sh -c "ELECTRS_DAEMON_RPC_ADDR='host.docker.internal:18332' ELECTRS_DAEMON_P2P_ADDR='host.docker.internal:18333'  ELECTRS_ELECTRUM_RPC_ADDR='0.0.0.0:60001' /electrs/target/release/electrs --conf /electrs_config.toml"
+      ELECTRS_DAEMON_RPC_ADDR: 'host.docker.internal:18332'
+      ELECTRS_DAEMON_P2P_ADDR: 'host.docker.internal:18333'
+      ELECTRS_ELECTRUM_RPC_ADDR: '0.0.0.0:60001' 
+    command: sh -c "/electrs/target/release/electrs --conf /electrs_config.toml"
     extra_hosts:
       - "host.docker.internal:host-gateway"
