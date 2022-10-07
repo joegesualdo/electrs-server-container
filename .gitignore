@@ -1,1 +1,2 @@
-electrsdata
+electrsdata/*
+!electrsdata/.gitkeep
